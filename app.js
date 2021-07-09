@@ -22,7 +22,7 @@ mongoose.set('useCreateIndex', true);
 const userSchema = new mongoose.Schema({
   name: String,
   balance: Number,
-  contact: Number
+  contact: String
 });
 
 const User = new mongoose.model("User", userSchema);
@@ -37,34 +37,34 @@ app.get("/customers", function(req, res) {
   const someconstant1 = new User({
     name: "sam",
     balance: 1000,
-    concat: 6783458978
+    contact: "6783458978"
   });
   const someconstant2 = new User({
     name: "bob",
     balance: 1000,
-    concat: 6578398435
+    contact: "6578398435"
   });
   const someconstant3 = new User({
     name: "mille",
     balance: 1000,
-    concat: 9724375487
+    contact: "9724375487"
   });
   const someconstant4 = new User({
     name: "rob",
     balance: 1000,
-    concat: 8936478245
+    contact:"8936478245"
   });
   const someconstant5 = new User({
     name: "john",
     balance: 1000,
-    concat: 9785646578
+    contact: "9785646578"
   });
   const someconstant6 = new User({
     name: "peter",
     balance: 1000,
-    concat: 9576486788
+    contact: "9576486788"
   });
-  defaultItem=[someconstant1,someconstant2,someconstant3,someconstant4,someconstant5,someconstant6];
+  defaultItem = [someconstant1, someconstant2, someconstant3, someconstant4, someconstant5, someconstant6];
   User.find(function(err, founditems) {
     if (founditems.length === 0) {
       User.insertMany(defaultItem, function(err) {
@@ -79,6 +79,22 @@ app.get("/customers", function(req, res) {
       customers: founditems,
     });
   });
+});
+
+var username=" ";
+app.get("/profile", function(req, res) {
+  User.find(function(err, founditems) {
+    res.render("profile", {
+      profile: founditems,
+      profilename:username
+    });
+  });
+});
+
+
+app.post("/customers",function(req,res){
+  username=req.body.profilebtn;
+  res.redirect("/profile");
 });
 
 app.listen(3000, function() {

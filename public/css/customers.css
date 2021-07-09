@@ -1,4 +1,6 @@
-
+body{
+  text-align: center;
+}
 .navbar {
   background-color: #5AA6E8;
 }
@@ -10,22 +12,34 @@ h2{
 
 .name{
   background-color: #2768A1;
-  margin-top: 14px;
+  margin-top: 20px;
   width: 70%;
   height: 50px;
   border-radius: 15px;
   margin-left: 15%;
   color: white;
+  text-align: right;
+
 }
 
 .name:hover{
   background-color:#5AA6E8;
 }
 .btn{
-  margin-top: 0.8%;
-  margin-left: 2%;
+  margin-top: 0.66%;
+  margin-right : 2%;
+}
+.prof{
+  margin-right: 13%;
+  background-color: #231F58;
+  color: white
 }
 h4{
-margin-left: 2%;
+margin-top:20px;
+margin-right: 60%;
 display: inline;
+}
+.form1{
+  width:100px;
+  margin-left: 45%
 }
