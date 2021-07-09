@@ -1,0 +1,32 @@
+<%- include("header") -%>
+<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="#">OurBank</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<h1>Welcome To OurBank</h1>
+<hr>
+<img class="imag1" src="images/title.jpg" alt="">
+
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+      <img class="imag" src="images/home.svg" alt="">
+    </div>
+    <div class="col-md">
+      <a href="/customers"><button type="button" class="btn ">View all Customers</button></a>
+    </div>
+  </div>
+</div>
+<%- include("footer") -%>

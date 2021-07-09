@@ -1,0 +1,31 @@
+
+.navbar {
+  background-color: #5AA6E8;
+}
+h2{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 18px
+}
+
+.name{
+  background-color: #2768A1;
+  margin-top: 14px;
+  width: 70%;
+  height: 50px;
+  border-radius: 15px;
+  margin-left: 15%;
+  color: white;
+}
+
+.name:hover{
+  background-color:#5AA6E8;
+}
+.btn{
+  margin-top: 0.8%;
+  margin-left: 2%;
+}
+h4{
+margin-left: 2%;
+display: inline;
+}
