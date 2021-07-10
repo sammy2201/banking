@@ -20,13 +20,22 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
 const userSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    unique: true,
+  },
   balance: Number,
   contact: String
 });
 
-const User = new mongoose.model("User", userSchema);
+const transferSchema = new mongoose.Schema({
+  name1: String,
+  name2: String,
+  balance: Number,
+});
 
+const User = new mongoose.model("User", userSchema);
+const Transaction = new mongoose.model("Transaction", transferSchema);
 
 
 app.get("/", function(req, res) {
@@ -52,7 +61,7 @@ app.get("/customers", function(req, res) {
   const someconstant4 = new User({
     name: "rob",
     balance: 1000,
-    contact:"8936478245"
+    contact: "8936478245"
   });
   const someconstant5 = new User({
     name: "john",
@@ -81,21 +90,81 @@ app.get("/customers", function(req, res) {
   });
 });
 
-var username=" ";
+var username = " ";
 app.get("/profile", function(req, res) {
   User.find(function(err, founditems) {
     res.render("profile", {
       profile: founditems,
-      profilename:username
+      profilename: username
     });
   });
 });
 
 
-app.post("/customers",function(req,res){
-  username=req.body.profilebtn;
+app.get("/transfer", function(req, res) {
+  res.render("transfer");
+});
+
+app.post("/customers", function(req, res) {
+  username = req.body.profilebtn;
   res.redirect("/profile");
 });
+
+app.post("/transfer", function(req, res) {
+  const name1 = req.body.name1;
+  const name2 = req.body.name2;
+  const amount = req.body.amount;
+
+  const someconst = new Transaction({
+    name1: name1,
+    name2: name2,
+    balance: amount
+  });
+  someconst.save();
+  User.findOne({
+    name: name1
+  }, function(err, docs) {
+    if (err) {
+      console.console.log(err);
+    } else {
+      if (docs !== null) {
+        const prevbalance = docs.balance;
+        User.findOneAndUpdate({
+          name: name1
+        }, {
+          balance: prevbalance - Number(amount)
+        }, null, function(err, docs) {
+          if (err) {
+            console.log(err);
+          }
+        });
+      }
+    }
+  });
+
+  User.findOne({
+    name: name2
+  }, function(err, docs) {
+    if (err) {
+      console.console.log(err);
+    } else {
+      if (docs !== null) {
+        const prevbalance = docs.balance;
+        User.findOneAndUpdate({
+          name: name2
+        }, {
+          balance: prevbalance + Number(amount)
+        }, null, function(err, docs) {
+          if (err) {
+            console.log(err);
+          }
+        });
+      }
+    }
+  });
+  res.redirect("transfer");
+});
+
 
 app.listen(3000, function() {
   console.log("in port 3000");
