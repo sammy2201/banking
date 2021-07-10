@@ -4,7 +4,8 @@
 h2{
   text-align: center;
   margin-top: 50px;
-  margin-bottom: 18px
+  margin-bottom: 18px;
+  font-style: italic;
 }
 body{
   text-align: center;
@@ -29,6 +30,6 @@ form{
 footer{
   margin-top: 20px;
   background-color: black;
-  height: 200px;
+  height: 100px;
   color: white
 }

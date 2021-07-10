@@ -73,7 +73,23 @@ app.get("/customers", function(req, res) {
     balance: 1000,
     contact: "9576486788"
   });
-  defaultItem = [someconstant1, someconstant2, someconstant3, someconstant4, someconstant5, someconstant6];
+  const someconstant7 = new User({
+    name: "kabir",
+    balance: 1000,
+    contact: "9576457788"
+  });
+
+  const someconstant9 = new User({
+    name: "root",
+    balance: 1000,
+    contact: "9500486788"
+  });
+  const someconstant10 = new User({
+    name: "alex",
+    balance: 1000,
+    contact: "9579988788"
+  });
+  defaultItem = [someconstant1, someconstant2, someconstant3, someconstant4, someconstant5, someconstant6,someconstant7,someconstant9,someconstant10];
   User.find(function(err, founditems) {
     if (founditems.length === 0) {
       User.insertMany(defaultItem, function(err) {
@@ -103,6 +119,14 @@ app.get("/profile", function(req, res) {
 
 app.get("/transfer", function(req, res) {
   res.render("transfer");
+});
+
+app.get("/transactionhistory", function(req, res) {
+  Transaction.find(function(err, founditems) {
+    res.render("transactionhistory", {
+      transactionhistory: founditems,
+    });
+  });
 });
 
 app.post("/customers", function(req, res) {

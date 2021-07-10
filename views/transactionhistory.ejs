@@ -1,5 +1,5 @@
 <%- include("header") -%>
-<link rel="stylesheet" href="css/profile.css">
+<link rel="stylesheet" href="css/transactionhistory.css">
 </head>
 
 <body>
@@ -19,26 +19,14 @@
           <a class="nav-link" href="/customers">View all customers <span class="sr-only">(current)</span></a>
         </li>
       </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="/transactionhistory">transaction history<span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
     </div>
   </nav>
-  <h2>Profile</h2>
-  <div class="card">
-    <div class="card-body">
-      <i class="fas fa-user fa-5x"></i>
-      <% profile.forEach(function(item){ %>
-      <% if (item.name===profilename){%>
-      <div class="name">
-        <h4>name : <%=  item.name  %></h4>
-        <h4>balance : <%=  item.balance  %></h4>
-        <h4>contact : <%=  item.contact  %></h4>
-      </div>
-      <% }%>
-      <% })%>
-    </div>
+  <h2>transaction history</h2>
+
+  <% transactionhistory.forEach(function(item){ %>
+  <div class="name">
+    <h4><%=  item.name1  %></h4>
+    <h4><%=  item.name2  %></h4>
+    <h4><%=  item.balance  %></h4>
   </div>
-  <%- include("footer") -%>
+  <% })%>
