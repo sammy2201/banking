@@ -162,7 +162,7 @@ app.post("/transfer", function(req, res) {
       }
     }
   });
-  res.redirect("transfer");
+  res.render("complete");
 });
 
 

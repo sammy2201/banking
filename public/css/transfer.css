@@ -6,3 +6,29 @@ h2{
   margin-top: 50px;
   margin-bottom: 18px
 }
+body{
+  text-align: center;
+}
+
+img{
+  width: 50%;
+  height: 350px;
+  display: block;
+  margin-left: 25%
+}
+form{
+  width: 60%;
+  margin-left: 20%
+}
+.amount{
+  margin-left: 140%
+}
+.amountl{
+  margin-left: 170%
+}
+footer{
+  margin-top: 20px;
+  background-color: black;
+  height: 200px;
+  color: white
+}
