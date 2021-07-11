@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.set('view engine', 'ejs');
 
-mongoose.connect("mongodb://localhost:27017/bankdb", {
+mongoose.connect("mongodb+srv://admin_sam:test123@cluster0.l9sjj.mongodb.net/bankdb", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -189,7 +189,10 @@ app.post("/transfer", function(req, res) {
   res.render("complete");
 });
 
-
-app.listen(3000, function() {
-  console.log("in port 3000");
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port,function(){
+  console.log("server started");
 });
