@@ -22,11 +22,22 @@
     </div>
   </nav>
   <h2>transaction history</h2>
-
-  <% transactionhistory.forEach(function(item){ %>
-  <div class="name">
-    <h4><%=  item.name1  %></h4>
-    <h4><%=  item.name2  %></h4>
-    <h4><%=  item.balance  %></h4>
-  </div>
-  <% })%>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Transfered from</th>
+        <th scope="col">Transfered to</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+    <% transactionhistory.forEach(function(item){ %>
+    <tbody>
+      <tr>
+        <td><%=  item.name1  %></td>
+        <td><%=  item.name2  %></td>
+        <td><%=  item.balance  %></td>
+      </tr>
+    </tbody>
+    <% })%>
+  </table>
+    <%- include("footer") -%>
